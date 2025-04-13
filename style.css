@@ -38,6 +38,9 @@
   nav ul li a:hover {
     color: #00ffc8;
   }
+  .menu-toggle {
+    display: none;
+  }
   
   /* Sections */
   section {
@@ -85,5 +88,38 @@
   p {
     font-size: 1.2rem;
     max-width: 600px;
+  }
+
+  @media (max-width: 768px) {
+    .menu-toggle {
+      display: block;
+      cursor: pointer;
+      font-size: 1.8rem;
+      color: white;
+      background: none;
+      border: none;
+      position: absolute;
+      top: 15px;
+      right: 20px;
+    }
+  
+    nav ul {
+      flex-direction: column;
+      gap: 20px;
+      background-color: #111;
+      width: 100%;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      display: none;
+    }
+  
+    nav ul.show {
+      display: flex;
+    }
+  
+    nav ul li {
+      margin: 10px 0;
+    }
   }
   
