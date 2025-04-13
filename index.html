@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>ATB4K | Portfolio</title>
   <link rel="stylesheet" href="./style.css"> 
-
 </head>
 <body>
 
   <!-- Navigation -->
   <nav>
-    <ul>
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    <ul id="nav-menu">
       <li><a href="#home">Home</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#skills">Skills</a></li>
@@ -28,7 +28,7 @@
 
   <section id="projects">
     <h2>🚀 Projects</h2>
-    <p>Heres some stuff Ive built. (More coming soon!)</p>
+    <p>Here’s some stuff I've built. (More coming soon!)</p>
   </section>
 
   <section id="skills">
@@ -46,6 +46,14 @@
     <p>Email: your@email.com</p>
     <p>GitHub: <a href="https://github.com/Atb4k" target="_blank">Atb4k</a></p>
   </section>
+
+  <!-- Script for mobile menu -->
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('nav-menu');
+      menu.classList.toggle('show');
+    }
+  </script>
 
 </body>
 </html>
