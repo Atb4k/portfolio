@@ -193,7 +193,16 @@ nav ul li a:hover {
   color: #00ffc8;
 }
 .menu-toggle {
-  display: block;
+  display: none; /* Hide on desktop */
+  position: fixed;
+  top: 15px;
+  right: 20px;
+  font-size: 2rem;
+  color: white;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 3001; /* Keep it above everything */
 }
 
 /* Sections */
