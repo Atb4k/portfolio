@@ -12,20 +12,36 @@ body {
   overflow-x: hidden;
 }
 
-/* Flash Animation */
-@keyframes flash {
-  0% { opacity: 0; }
-  50% { opacity: 1; }
-  100% { opacity: 0; }
+/* Fade Animations */
+.fade-out {
+  animation: fadeOut 1.2s forwards;
 }
-#screen-flash {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100vw; height: 100vh;
-  background: white;
-  opacity: 0;
-  z-index: 9999;
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+/* Tron Watermark */
+.tron-watermark {
+  position: absolute;
+  font-size: 12vw;
+  color: #00ffc8;
+  opacity: 0.06;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: 'Share Tech Mono', monospace;
+  z-index: 0;
   pointer-events: none;
+  user-select: none;
+  animation: tron-glow 3s infinite ease-in-out;
+}
+@keyframes tron-glow {
+  0%, 100% {
+    text-shadow: 0 0 20px #00ffc8, 0 0 40px #00ffc8, 0 0 60px #00ffc8;
+  }
+  50% {
+    text-shadow: 0 0 10px #00ffc8, 0 0 30px #00ffc8;
+  }
 }
 
 /* Launch Screen */
@@ -41,16 +57,9 @@ body {
   z-index: 3000;
   animation: fadeIn 1s ease-in-out;
 }
-.fade-out {
-  animation: fadeOut 1.2s forwards;
-}
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
-}
-@keyframes fadeOut {
-  from { opacity: 1; }
-  to { opacity: 0; }
 }
 
 /* Glowing Portrait */
@@ -60,6 +69,7 @@ body {
   border-radius: 20px;
   box-shadow: 0 0 30px #00ffc8;
   overflow: hidden;
+  z-index: 1;
 }
 .glow-frame img {
   width: 200px;
@@ -67,8 +77,6 @@ body {
   object-fit: cover;
   border-radius: 20px;
 }
-
-/* Light Beam Animation */
 .light-beam {
   position: absolute;
   top: 0;

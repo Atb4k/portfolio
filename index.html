@@ -9,11 +9,9 @@
 </head>
 <body>
 
-  <!-- Flash transition -->
-  <div id="screen-flash"></div>
-
   <!-- Anime Launch Scene -->
   <div id="launch-screen">
+    <div class="tron-watermark">ATB4K</div>
     <div class="glow-frame">
       <img src="ghibli-you.png" alt="Ghibli You" />
       <div class="light-beam"></div>
@@ -29,8 +27,7 @@
   </div>
 
   <!-- Main Content -->
-  <div id="main-content" style="display: none; opacity: 0;">
-
+  <div id="main-content" style="display: none; opacity: 0; transform: scale(0.9) translateY(50px);">
     <!-- Navigation -->
     <nav>
       <button class="menu-toggle" onclick="toggleMenu()">☰</button>
@@ -90,14 +87,17 @@
         setTimeout(runTypingIntro, 1300);
       } else {
         setTimeout(() => {
-          const flash = document.getElementById("screen-flash");
-          flash.style.animation = "flash 0.5s";
+          const overlay = document.getElementById("intro-overlay");
+          overlay.style.display = "none";
+
+          const main = document.getElementById("main-content");
+          main.style.display = "block";
+
           setTimeout(() => {
-            flash.style.display = "none";
-            document.getElementById("intro-overlay").style.display = "none";
-            document.getElementById("main-content").style.display = "block";
-            document.getElementById("main-content").style.opacity = "1";
-          }, 500);
+            main.style.transition = "opacity 1s ease, transform 1s ease";
+            main.style.opacity = "1";
+            main.style.transform = "scale(1) translateY(0)";
+          }, 50);
         }, 1500);
       }
     }
