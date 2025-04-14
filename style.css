@@ -193,7 +193,7 @@ nav ul li a:hover {
   color: #00ffc8;
 }
 .menu-toggle {
-  display: none;
+  display: block;
 }
 
 /* Sections */
