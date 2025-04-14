@@ -1,68 +1,124 @@
+/* Reset & Base */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   scroll-behavior: smooth;
 }
-
 body {
   font-family: 'Share Tech Mono', monospace;
   color: white;
-  background-color: black;
+  background-color: #000;
+  overflow-x: hidden;
 }
 
-/* Launch Screen */
-#launch-screen {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: black;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  z-index: 3000;
+/* Fade Animations */
+.fade-out {
+  animation: fadeOut 1.2s forwards;
+}
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
 }
 
+/* Tron Watermark */
 .tron-watermark {
-  position: relative;
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
   font-size: 10vw;
   color: #00ffc8;
   opacity: 0.08;
   font-weight: bold;
   text-transform: uppercase;
   font-family: 'Share Tech Mono', monospace;
-  margin-bottom: 30px;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
   animation: tron-glow 3s infinite ease-in-out;
 }
-
 @keyframes tron-glow {
   0%, 100% {
-    text-shadow: 0 0 20px #00ffc8, 0 0 40px #00ffc8;
+    text-shadow: 0 0 20px #00ffc8, 0 0 40px #00ffc8, 0 0 60px #00ffc8;
   }
   50% {
     text-shadow: 0 0 10px #00ffc8, 0 0 30px #00ffc8;
   }
 }
 
-.glow-frame {
-  margin-bottom: 20px;
-  position: relative;
-  padding: 10px;
-  border-radius: 20px;
-  box-shadow: 0 0 25px #00ffc8;
+/* Launch Screen */
+#launch-screen {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background-color: #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 3000;
+  animation: fadeIn 1s ease-in-out;
+  padding: 20px;
+  text-align: center;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
+/* Glowing Portrait + Transformer */
+.glow-frame {
+  position: relative;
+  margin-bottom: 30px;
+  border-radius: 20px;
+  box-shadow: 0 0 30px #00ffc8;
+  overflow: hidden;
+  z-index: 1;
+  animation: transformerIn 1.2s ease-out;
+}
+@keyframes transformerIn {
+  0% {
+    transform: scale(0.5) rotateX(30deg);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1) rotateX(0deg);
+    opacity: 1;
+  }
+}
 .glow-frame img {
   width: 200px;
   height: 200px;
-  border-radius: 15px;
-  display: block;
+  object-fit: cover;
+  border-radius: 20px;
 }
 
+/* Light Beam Effect */
+.light-beam {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: sweep 2.5s infinite ease-in-out;
+  transform: skewX(-20deg);
+  border-radius: 20px;
+  pointer-events: none;
+  z-index: 2;
+}
+@keyframes sweep {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* Launch Button */
 #launch-screen button {
   padding: 12px 30px;
   font-size: 1.2rem;
@@ -75,80 +131,72 @@ body {
   box-shadow: 0 0 15px #00ffc8;
   transition: 0.3s ease;
 }
-
 #launch-screen button:hover {
   background: #00bda3;
   transform: scale(1.05);
 }
 
-.fade-out {
-  animation: fadeOut 1s forwards;
-}
-
-@keyframes fadeOut {
-  from { opacity: 1; }
-  to { opacity: 0; }
-}
-
-/* Typing Overlay */
+/* Typing Intro */
 #intro-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 100vw;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
   background: black;
-  color: #00ffc8;
   display: none;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  z-index: 3500;
-  font-family: monospace;
+  z-index: 2000;
+  font-family: 'Share Tech Mono', monospace;
 }
-
 #typing-box {
   width: 80%;
   max-width: 600px;
-  padding: 30px;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   background-color: rgba(0, 0, 0, 0.7);
+  color: #00ffc8;
+  padding: 30px;
   border-left: 4px solid #00ffc8;
-  box-shadow: 0 0 20px #00ffc8;
+  box-shadow: 0 0 25px #00ffc8;
+  z-index: 2;
+}
+#typing-text::after {
+  content: " █";
+  animation: blink 1s steps(1) infinite;
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
-/* Main Content */
+/* Navbar */
 nav {
+  position: sticky;
+  top: 0;
   background: #111;
   padding: 15px 0;
   text-align: center;
-  position: sticky;
-  top: 0;
   z-index: 1000;
 }
-
 nav ul {
   list-style: none;
   display: flex;
   justify-content: center;
   gap: 40px;
 }
-
 nav ul li a {
   color: white;
   text-decoration: none;
   font-weight: bold;
   font-size: 1.1em;
 }
-
 nav ul li a:hover {
   color: #00ffc8;
 }
-
 .menu-toggle {
   display: none;
 }
 
+/* Sections */
 section {
   min-height: 100vh;
   padding: 80px 20px;
@@ -157,8 +205,8 @@ section {
   justify-content: center;
   align-items: center;
   text-align: center;
+  transition: all 0.5s;
 }
-
 #home {
   background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
 }
@@ -175,10 +223,25 @@ section {
   background: linear-gradient(135deg, #fccb90 0%, #d57eeb 100%);
 }
 
-/* Responsive Fixes */
-@media (max-width: 600px) {
+/* Typography */
+h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+h2 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+p {
+  font-size: 1.2rem;
+  max-width: 600px;
+}
+
+/* Responsive Navbar + Launch */
+@media (max-width: 768px) {
   .tron-watermark {
     font-size: 16vw;
+    top: 3%;
   }
 
   .glow-frame img {
@@ -191,13 +254,36 @@ section {
     padding: 10px 25px;
   }
 
+  .menu-toggle {
+    display: block;
+    cursor: pointer;
+    font-size: 2rem;
+    color: white;
+    background: none;
+    border: none;
+    position: fixed;
+    top: 15px;
+    right: 20px;
+    z-index: 1001;
+  }
+
   nav ul {
     flex-direction: column;
     gap: 20px;
+    background-color: #111;
+    width: 100%;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    display: none;
     padding: 10px 0;
   }
 
   nav ul.show {
     display: flex;
+  }
+
+  nav ul li {
+    margin: 10px 0;
   }
 }

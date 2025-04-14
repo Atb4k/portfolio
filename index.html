@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>ATB4K | Portfolio</title>
 
-  <!-- Google Font -->
+  <!-- 🔥 Font preload to avoid mismatch -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
@@ -14,15 +14,13 @@
 </head>
 <body>
 
-  <!-- Launch Screen -->
+  <!-- Anime Launch Scene -->
   <div id="launch-screen">
     <div class="tron-watermark">ATB4K</div>
-
     <div class="glow-frame">
       <img src="ghibli-you.png" alt="Ghibli You" />
       <div class="light-beam"></div>
     </div>
-
     <button onclick="startIntro()">Launch</button>
   </div>
 
@@ -33,8 +31,9 @@
     </div>
   </div>
 
-  <!-- Main Content (Hidden at first) -->
-  <div id="main-content" style="display: none; opacity: 0;">
+  <!-- Main Content -->
+  <div id="main-content" style="display: none; opacity: 0; transform: scale(0.9) translateY(50px);">
+    <!-- Navigation -->
     <nav>
       <button class="menu-toggle" onclick="toggleMenu()">☰</button>
       <ul id="nav-menu">
@@ -46,13 +45,18 @@
       </ul>
     </nav>
 
-    <section id="home"><h1>Hey, I'm ATB4K 👋</h1><p>Welcome to my colorful, chaotic portfolio!</p></section>
+    <!-- Sections -->
+    <section id="home">
+      <h1>Hey, I'm ATB4K 👋</h1>
+      <p>Welcome to my colorful, chaotic portfolio!</p>
+    </section>
     <section id="projects"><h2>🚀 Projects</h2><p>Coming soon!</p></section>
     <section id="skills"><h2>🧠 Skills</h2><p>Tech list here</p></section>
     <section id="about"><h2>🙋 About Me</h2><p>Bio goes here</p></section>
     <section id="contact"><h2>📫 Contact</h2><p>GitHub/email here</p></section>
   </div>
 
+  <!-- Scripts -->
   <script>
     function toggleMenu() {
       const menu = document.getElementById('nav-menu');
@@ -69,7 +73,7 @@
         launch.style.display = "none";
         overlay.style.display = "flex";
         runTypingIntro();
-      }, 1000);
+      }, 1200);
     }
 
     const lines = [
@@ -91,8 +95,12 @@
           document.getElementById("intro-overlay").style.display = "none";
           const main = document.getElementById("main-content");
           main.style.display = "block";
-          main.style.opacity = 1;
-        }, 1200);
+          setTimeout(() => {
+            main.style.transition = "opacity 1s ease, transform 1s ease";
+            main.style.opacity = "1";
+            main.style.transform = "scale(1) translateY(0)";
+          }, 50);
+        }, 1500);
       }
     }
   </script>
