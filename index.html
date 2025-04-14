@@ -5,22 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>ATB4K | Portfolio</title>
   <link rel="stylesheet" href="style.css">
-  <script src="particles.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <!-- Screen Flash -->
+  <!-- Flash transition -->
   <div id="screen-flash"></div>
 
-  <!-- Launch Screen -->
+  <!-- Anime Launch Scene -->
   <div id="launch-screen">
-    <img src="ghibli-you.png" alt="Ghibli You" />
+    <div class="glow-frame">
+      <img src="ghibli-you.png" alt="Ghibli You" />
+      <div class="light-beam"></div>
+    </div>
     <button onclick="startIntro()">Launch</button>
   </div>
 
   <!-- Typing Intro Overlay -->
   <div id="intro-overlay">
-    <div id="particles-js"></div>
     <div id="typing-box">
       <p id="typing-text"></p>
     </div>
@@ -48,8 +50,8 @@
     </section>
     <section id="projects"><h2>🚀 Projects</h2><p>Coming soon!</p></section>
     <section id="skills"><h2>🧠 Skills</h2><p>Tech list here</p></section>
-    <section id="about"><h2>👤 About Me</h2><p>Bio goes here</p></section>
-    <section id="contact"><h2>📩 Contact</h2><p>GitHub/email here</p></section>
+    <section id="about"><h2>🙋 About Me</h2><p>Bio goes here</p></section>
+    <section id="contact"><h2>📫 Contact</h2><p>GitHub/email here</p></section>
   </div>
 
   <!-- Scripts -->
@@ -62,20 +64,21 @@
     function startIntro() {
       const launch = document.getElementById("launch-screen");
       const overlay = document.getElementById("intro-overlay");
+
       launch.classList.add("fade-out");
 
       setTimeout(() => {
         launch.style.display = "none";
         overlay.style.display = "flex";
         runTypingIntro();
-      }, 1000);
+      }, 1200);
     }
 
     const lines = [
-      "Booting ATB4K engine...",
-      "Establishing visual systems...",
-      "Uploading neural patterns...",
-      "Entering the portfolio..."
+      "Initializing ATB4K.exe...",
+      "Loading anime protocol layers...",
+      "Activating vision UI shaders...",
+      "Welcome to the ATB4K Verse."
     ];
 
     let i = 0;
@@ -84,7 +87,7 @@
       if (i < lines.length) {
         textBox.innerHTML += lines[i] + "<br/>";
         i++;
-        setTimeout(runTypingIntro, 1200);
+        setTimeout(runTypingIntro, 1300);
       } else {
         setTimeout(() => {
           const flash = document.getElementById("screen-flash");
@@ -98,23 +101,6 @@
         }, 1500);
       }
     }
-
-    // Particle FX init
-    particlesJS("particles-js", {
-      particles: {
-        number: { value: 45 },
-        color: { value: "#00ffc8" },
-        size: { value: 3 },
-        opacity: { value: 0.5 },
-        line_linked: { enable: true, distance: 120, color: "#00ffc8", opacity: 0.4, width: 1 },
-        move: { enable: true, speed: 1.2 }
-      },
-      interactivity: {
-        events: { onhover: { enable: true, mode: "repulse" } },
-        modes: { repulse: { distance: 80 } }
-      },
-      retina_detect: true
-    });
   </script>
 </body>
 </html>
