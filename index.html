@@ -14,27 +14,49 @@
     <button onclick="launchSite()">Launch</button>
   </div>
 
-  <!-- Navigation -->
-  <nav>
-    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-    <ul id="nav-menu">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+  <!-- 👇 Main content (hidden at first) -->
+  <div id="main-content" style="display: none;">
 
-  <!-- Sections (unchanged) -->
-  <section id="home">
-    <h1>Hey, I'm ATB4K 👋</h1>
-    <p>Welcome to my colorful, chaotic portfolio!</p>
-  </section>
-  <section id="projects"><h2>🚀 Projects</h2><p>Coming soon!</p></section>
-  <section id="skills"><h2>🧠 Skills</h2><p>Tech list here</p></section>
-  <section id="about"><h2>🙋 About Me</h2><p>Bio goes here</p></section>
-  <section id="contact"><h2>📫 Contact</h2><p>GitHub/email here</p></section>
+    <!-- Navigation -->
+    <nav>
+      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+      <ul id="nav-menu">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Sections -->
+    <section id="home">
+      <h1>Hey, I'm ATB4K 👋</h1>
+      <p>Welcome to my colorful, chaotic portfolio!</p>
+    </section>
+
+    <section id="projects">
+      <h2>🚀 Projects</h2>
+      <p>Here’s some stuff I've built. (More coming soon!)</p>
+    </section>
+
+    <section id="skills">
+      <h2>🧠 Skills</h2>
+      <p>Python, Raspberry Pi, Azure, HTML/CSS, more...</p>
+    </section>
+
+    <section id="about">
+      <h2>🙋 About Me</h2>
+      <p>I build cool things that help people.</p>
+    </section>
+
+    <section id="contact">
+      <h2>📫 Contact Me</h2>
+      <p>Email: your@email.com</p>
+      <p>GitHub: <a href="https://github.com/Atb4k" target="_blank">Atb4k</a></p>
+    </section>
+
+  </div>
 
   <!-- Scripts -->
   <script>
@@ -44,9 +66,14 @@
     }
 
     function launchSite() {
-      document.getElementById("launch-screen").classList.add("fade-out");
+      const launch = document.getElementById("launch-screen");
+      const main = document.getElementById("main-content");
+
+      launch.classList.add("fade-out");
+
       setTimeout(() => {
-        document.getElementById("launch-screen").style.display = "none";
+        launch.style.display = "none";
+        main.style.display = "block";
       }, 1500);
     }
   </script>
