@@ -5,24 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>ATB4K | Portfolio</title>
   <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 </head>
 <body>
 
-  <!-- 🚀 Launch Screen -->
+  <!-- Screen Flash -->
+  <div id="screen-flash"></div>
+
+  <!-- Launch Screen -->
   <div id="launch-screen">
     <img src="ghibli-you.png" alt="Ghibli You" />
     <button onclick="startIntro()">Launch</button>
   </div>
-  
-  <!-- ⚡ Hacking Animation Overlay -->
+
+  <!-- Typing Intro Overlay -->
   <div id="intro-overlay">
+    <div id="particles-js"></div>
     <div id="typing-box">
       <p id="typing-text"></p>
     </div>
   </div>
 
-  <!-- 👇 Main content (hidden at first) -->
-  <div id="main-content" style="display: none;">
+  <!-- Main Content -->
+  <div id="main-content" style="display: none; opacity: 0;">
 
     <!-- Navigation -->
     <nav>
@@ -41,28 +46,10 @@
       <h1>Hey, I'm ATB4K 👋</h1>
       <p>Welcome to my colorful, chaotic portfolio!</p>
     </section>
-
-    <section id="projects">
-      <h2>🚀 Projects</h2>
-      <p>Here’s some stuff I've built. (More coming soon!)</p>
-    </section>
-
-    <section id="skills">
-      <h2>🧠 Skills</h2>
-      <p>Python, Raspberry Pi, Azure, HTML/CSS, more...</p>
-    </section>
-
-    <section id="about">
-      <h2>🙋 About Me</h2>
-      <p>I build cool things that help people.</p>
-    </section>
-
-    <section id="contact">
-      <h2>📫 Contact Me</h2>
-      <p>Email: your@email.com</p>
-      <p>GitHub: <a href="https://github.com/Atb4k" target="_blank">Atb4k</a></p>
-    </section>
-
+    <section id="projects"><h2>🚀 Projects</h2><p>Coming soon!</p></section>
+    <section id="skills"><h2>🧠 Skills</h2><p>Tech list here</p></section>
+    <section id="about"><h2>👤 About Me</h2><p>Bio goes here</p></section>
+    <section id="contact"><h2>📩 Contact</h2><p>GitHub/email here</p></section>
   </div>
 
   <!-- Scripts -->
@@ -71,27 +58,26 @@
       const menu = document.getElementById('nav-menu');
       menu.classList.toggle('show');
     }
-  
+
     function startIntro() {
       const launch = document.getElementById("launch-screen");
       const overlay = document.getElementById("intro-overlay");
-  
       launch.classList.add("fade-out");
-  
+
       setTimeout(() => {
         launch.style.display = "none";
         overlay.style.display = "flex";
         runTypingIntro();
       }, 1000);
     }
-  
+
     const lines = [
       "Booting ATB4K engine...",
       "Establishing visual systems...",
       "Uploading neural patterns...",
       "Entering the portfolio..."
     ];
-  
+
     let i = 0;
     function runTypingIntro() {
       const textBox = document.getElementById("typing-text");
@@ -101,16 +87,34 @@
         setTimeout(runTypingIntro, 1200);
       } else {
         setTimeout(() => {
-          document.getElementById("intro-overlay").classList.add("fade-out");
+          const flash = document.getElementById("screen-flash");
+          flash.style.animation = "flash 0.5s";
           setTimeout(() => {
+            flash.style.display = "none";
             document.getElementById("intro-overlay").style.display = "none";
             document.getElementById("main-content").style.display = "block";
-          }, 1500);
+            document.getElementById("main-content").style.opacity = "1";
+          }, 500);
         }, 1500);
       }
     }
-  </script>
-  
 
+    // Particle FX init
+    particlesJS("particles-js", {
+      particles: {
+        number: { value: 45 },
+        color: { value: "#00ffc8" },
+        size: { value: 3 },
+        opacity: { value: 0.5 },
+        line_linked: { enable: true, distance: 120, color: "#00ffc8", opacity: 0.4, width: 1 },
+        move: { enable: true, speed: 1.2 }
+      },
+      interactivity: {
+        events: { onhover: { enable: true, mode: "repulse" } },
+        modes: { repulse: { distance: 80 } }
+      },
+      retina_detect: true
+    });
+  </script>
 </body>
 </html>
