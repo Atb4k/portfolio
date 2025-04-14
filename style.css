@@ -24,7 +24,7 @@ body {
 /* Tron Watermark */
 .tron-watermark {
   position: absolute;
-  top: 15%;
+  top: 5%;
   left: 50%;
   transform: translateX(-50%);
   font-size: 10vw;
@@ -38,6 +38,7 @@ body {
   user-select: none;
   animation: tron-glow 3s infinite ease-in-out;
 }
+
 
 @keyframes tron-glow {
   0%, 100% {
