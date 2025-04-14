@@ -24,9 +24,12 @@ body {
 /* Tron Watermark */
 .tron-watermark {
   position: absolute;
-  font-size: 12vw;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 10vw;
   color: #00ffc8;
-  opacity: 0.06;
+  opacity: 0.08;
   font-weight: bold;
   text-transform: uppercase;
   font-family: 'Share Tech Mono', monospace;
@@ -35,6 +38,7 @@ body {
   user-select: none;
   animation: tron-glow 3s infinite ease-in-out;
 }
+
 @keyframes tron-glow {
   0%, 100% {
     text-shadow: 0 0 20px #00ffc8, 0 0 40px #00ffc8, 0 0 60px #00ffc8;
