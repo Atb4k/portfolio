@@ -275,6 +275,9 @@ p {
     right: 20px;
     z-index: 1100;
   }
+  .menu-toggle {
+    display: block;
+  }
 
   nav ul {
     flex-direction: column;
