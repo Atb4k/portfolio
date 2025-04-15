@@ -316,3 +316,30 @@ p {
   transform: scale(1.2);
   box-shadow: 0 0 15px #00ffc8, 0 0 30px #00ffc8;
 }
+.contact-info {
+  margin-top: 30px;
+  font-size: 1.2rem;
+  color: #ffffff;
+  text-shadow: 0 0 5px #00ffc8;
+  animation: fadeInUp 1s ease;
+}
+
+.contact-info a {
+  color: #00ffc8;
+  text-decoration: none;
+}
+
+.contact-info a:hover {
+  text-decoration: underline;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
