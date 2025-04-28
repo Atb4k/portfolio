@@ -5,17 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>ATB4K | Portfolio</title>
 
-  <!-- Preload Fonts -->
+  <!-- Font preload -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
 
-  <!-- Main Style -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- 🚀 Launch Screen -->
+  <!-- Launch Screen -->
   <div id="launch-screen">
     <div class="tron-watermark">ATB4K</div>
     <div class="glow-frame">
@@ -25,53 +24,54 @@
     <button onclick="startIntro()">Launch</button>
   </div>
 
-  <!-- ⚡ Typing Intro Overlay -->
+  <!-- Typing Intro -->
   <div id="intro-overlay">
     <div id="typing-box">
       <p id="typing-text"></p>
     </div>
   </div>
 
-  <!-- 🍔 Mobile Burger Menu -->
+  <!-- Burger menu -->
   <button class="menu-toggle" id="menuToggle" onclick="toggleMenu()">☰</button>
 
-  <!-- 👇 Main Content -->
+  <!-- Main Content -->
   <div id="main-content" style="display: none; opacity: 0; transform: scale(0.9) translateY(50px);">
     
-    <!-- Navigation (Tabs) -->
+    <!-- Tabs Navigation -->
     <nav>
       <ul id="nav-menu">
-        <li><button class="tab-button active" onclick="showTab('home')">Home</button></li>
-        <li><button class="tab-button" onclick="showTab('projects')">Projects</button></li>
-        <li><button class="tab-button" onclick="showTab('skills')">Skills</button></li>
-        <li><button class="tab-button" onclick="showTab('about')">About</button></li>
-        <li><button class="tab-button" onclick="showTab('contact')">Contact</button></li>
+        <li><button class="tab-button active" onclick="openTab('home')">Home</button></li>
+        <li><button class="tab-button" onclick="openTab('projects')">Projects</button></li>
+        <li><button class="tab-button" onclick="openTab('skills')">Skills</button></li>
+        <li><button class="tab-button" onclick="openTab('about')">About</button></li>
+        <li><button class="tab-button" onclick="openTab('contact')">Contact</button></li>
       </ul>
     </nav>
 
-    <!-- Tab Sections -->
-    <div id="home" class="tab-content">
+    <!-- Sections -->
+    <section id="home" class="tab-content" style="display: block;">
       <h1>Hey, I'm Aravind Soundirarajan 👋</h1>
       <p>Welcome to my colorful, chaotic portfolio!</p>
-    </div>
+    </section>
 
-    <div id="projects" class="tab-content">
+    <section id="projects" class="tab-content">
       <h2>🚀 Projects</h2>
       <p>Coming soon!</p>
-    </div>
+    </section>
 
-    <div id="skills" class="tab-content">
+    <section id="skills" class="tab-content">
       <h2>🧠 Skills</h2>
-      <p>Tech list here...</p>
-    </div>
+      <p>Tech list here</p>
+    </section>
 
-    <div id="about" class="tab-content">
+    <section id="about" class="tab-content">
       <h2>🙋 About Me</h2>
-      <p>Bio goes here...</p>
-    </div>
+      <p>Bio goes here</p>
+    </section>
 
-    <div id="contact" class="tab-content">
+    <section id="contact" class="tab-content">
       <h2>📫 Contact</h2>
+
       <div class="social-buttons">
         <a href="https://github.com/Atb4k" class="social-icon" target="_blank" title="GitHub">
           <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub Icon" />
@@ -85,11 +85,74 @@
         <p><strong>Email:</strong> <a href="mailto:aravindsoundir@gmail.com">aravindsoundir@gmail.com</a></p>
         <p><strong>Phone:</strong> <a href="tel:01133446502">01133446502</a></p>
       </div>
-    </div>
-
+    </section>
   </div>
 
   <!-- Scripts -->
-  <script src="script.js"></script>
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('nav-menu');
+      menu.classList.toggle('show');
+    }
+
+    function startIntro() {
+      const launch = document.getElementById("launch-screen");
+      const overlay = document.getElementById("intro-overlay");
+
+      launch.classList.add("fade-out");
+
+      setTimeout(() => {
+        launch.style.display = "none";
+        overlay.style.display = "flex";
+        runTypingIntro();
+      }, 1200);
+    }
+
+    const lines = [
+      "Initializing ATB4K.exe...",
+      "Loading anime protocol layers...",
+      "Activating vision UI shaders...",
+      "Welcome to the ATB4K Verse."
+    ];
+
+    let i = 0;
+    function runTypingIntro() {
+      const textBox = document.getElementById("typing-text");
+      if (i < lines.length) {
+        textBox.innerHTML += lines[i] + "<br/>";
+        i++;
+        setTimeout(runTypingIntro, 1300);
+      } else {
+        setTimeout(() => {
+          document.getElementById("intro-overlay").style.display = "none";
+          const main = document.getElementById("main-content");
+          main.style.display = "block";
+          document.getElementById("menuToggle").classList.add("show");
+          setTimeout(() => {
+            main.style.transition = "opacity 1s ease, transform 1s ease";
+            main.style.opacity = "1";
+            main.style.transform = "scale(1) translateY(0)";
+          }, 50);
+        }, 1500);
+      }
+    }
+
+    function openTab(tabId) {
+      const tabs = document.querySelectorAll('.tab-content');
+      tabs.forEach(tab => {
+        tab.style.display = 'none';
+      });
+
+      document.getElementById(tabId).style.display = 'block';
+
+      const buttons = document.querySelectorAll('.tab-button');
+      buttons.forEach(button => {
+        button.classList.remove('active');
+      });
+
+      event.target.classList.add('active');
+    }
+  </script>
+
 </body>
 </html>

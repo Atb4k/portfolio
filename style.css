@@ -94,7 +94,7 @@ body {
   border-radius: 20px;
 }
 
-/* Light Beam Effect */
+/* Light Beam */
 .light-beam {
   position: absolute;
   top: 0;
@@ -157,7 +157,6 @@ body {
   padding: 30px;
   border-left: 4px solid #00ffc8;
   box-shadow: 0 0 25px #00ffc8;
-  z-index: 2;
 }
 #typing-text::after {
   content: " █";
@@ -168,10 +167,25 @@ body {
   50% { opacity: 0; }
 }
 
-/* Navbar */
+/* Burger Button */
+.menu-toggle {
+  display: none;
+  position: fixed;
+  top: 15px;
+  right: 20px;
+  font-size: 2rem;
+  color: white;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 3001;
+}
+.menu-toggle.show {
+  display: block;
+}
+
+/* Navbar and Tabs */
 nav {
-  position: sticky;
-  top: 0;
   background: #111;
   padding: 15px 0;
   text-align: center;
@@ -181,32 +195,28 @@ nav ul {
   list-style: none;
   display: flex;
   justify-content: center;
-  gap: 40px;
+  gap: 20px;
 }
-nav ul li a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 1.1em;
+nav ul li {
+  margin: 0 5px;
 }
-nav ul li a:hover {
-  color: #00ffc8;
-}
-.menu-toggle {
-  display: none; /* Hide on desktop */
-  position: fixed;
-  top: 15px;
-  right: 20px;
-  font-size: 2rem;
-  color: white;
+.tab-button {
   background: none;
   border: none;
+  color: white;
+  font-size: 1.1em;
+  font-weight: bold;
   cursor: pointer;
-  z-index: 3001; /* Keep it above everything */
+  padding: 10px 20px;
+}
+.tab-button:hover,
+.tab-button.active {
+  color: #00ffc8;
 }
 
-/* Sections */
-section {
+/* Section (Tab) Content */
+.tab-content {
+  display: none;
   min-height: 100vh;
   padding: 80px 20px;
   display: flex;
@@ -214,89 +224,19 @@ section {
   justify-content: center;
   align-items: center;
   text-align: center;
-  transition: all 0.5s;
+  animation: fadeInTab 0.5s ease;
 }
-#home {
-  background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+@keyframes fadeInTab {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
-#projects {
-  background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
-}
-#skills {
-  background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
-}
-#about {
-  background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
-}
-#contact {
+
+/* Home, Projects, Skills, About */
+#home, #projects, #skills, #about, #contact {
   background: linear-gradient(135deg, #fccb90 0%, #d57eeb 100%);
 }
 
-/* Typography */
-h1 {
-  font-size: 3rem;
-  margin-bottom: 20px;
-}
-h2 {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
-}
-p {
-  font-size: 1.2rem;
-  max-width: 600px;
-}
-
-/* Responsive Navbar + Launch */
-@media (max-width: 768px) {
-  .tron-watermark {
-    font-size: 16vw;
-    top: 3%;
-  }
-
-  .glow-frame img {
-    width: 140px;
-    height: 140px;
-  }
-
-  #launch-screen button {
-    font-size: 1rem;
-    padding: 10px 25px;
-  }
-
-  .menu-toggle {
-    display: block;
-    cursor: pointer;
-    font-size: 2rem;
-    color: white;
-    background: none;
-    border: none;
-    position: fixed;
-    top: 15px;
-    right: 20px;
-    z-index: 1100;
-  }
-
-
-  nav ul {
-    flex-direction: column;
-    gap: 20px;
-    background-color: #111;
-    width: 100%;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    display: none;
-    padding: 10px 0;
-  }
-
-  nav ul.show {
-    display: flex;
-  }
-
-  nav ul li {
-    margin: 10px 0;
-  }
-}
+/* Contact */
 .social-buttons {
   margin-top: 20px;
   display: flex;
@@ -304,14 +244,12 @@ p {
   justify-content: center;
   align-items: center;
 }
-
 .social-icon img {
   width: 50px;
   height: 50px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   filter: drop-shadow(0 0 5px #00ffc8);
 }
-
 .social-icon:hover img {
   transform: scale(1.2);
   box-shadow: 0 0 15px #00ffc8, 0 0 30px #00ffc8;
@@ -320,19 +258,17 @@ p {
   margin-top: 30px;
   font-size: 1.2rem;
   color: #ffffff;
+  text-align: center;
   text-shadow: 0 0 5px #00ffc8;
   animation: fadeInUp 1s ease;
 }
-
 .contact-info a {
   color: #00ffc8;
   text-decoration: none;
 }
-
 .contact-info a:hover {
   text-decoration: underline;
 }
-
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -343,27 +279,22 @@ p {
     transform: translateY(0);
   }
 }
-.tab-content {
-  display: none;
-  animation: fadeInTab 0.5s ease;
-}
 
-@keyframes fadeInTab {
-  from { opacity: 0; }
-  to { opacity: 1; }
+/* Responsive */
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .tab-button {
+    padding: 10px;
+  }
+  .glow-frame img {
+    width: 140px;
+    height: 140px;
+  }
+  #launch-screen button {
+    font-size: 1rem;
+    padding: 10px 25px;
+  }
 }
-
-.tab-button {
-  background: none;
-  border: none;
-  color: white;
-  font-size: 1.1em;
-  font-weight: bold;
-  cursor: pointer;
-  padding: 10px 20px;
-}
-
-.tab-button:hover, .tab-button.active {
-  color: #00ffc8;
-}
-
