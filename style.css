@@ -343,3 +343,27 @@ p {
     transform: translateY(0);
   }
 }
+.tab-content {
+  display: none;
+  animation: fadeInTab 0.5s ease;
+}
+
+@keyframes fadeInTab {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.tab-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.1em;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 10px 20px;
+}
+
+.tab-button:hover, .tab-button.active {
+  color: #00ffc8;
+}
+
