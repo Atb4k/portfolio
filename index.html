@@ -1,87 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ATB4K | Portfolio</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your Name | Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Launch Screen -->
-  <div id="launch-screen">
-    <div class="tron-watermark">ATB4K</div>
-    <div class="glow-frame">
-      <img src="ghibli-you.png" alt="Ghibli You" />
-      <div class="light-beam"></div>
-    </div>
-    <button onclick="startIntro()">Launch</button>
-  </div>
-
-  <!-- Typing Intro -->
-  <div id="intro-overlay">
-    <div id="typing-box">
-      <p id="typing-text"></p>
-    </div>
-  </div>
-
-  <!-- Burger Menu (Mobile Only) -->
-  <button class="menu-toggle" id="menuToggle" onclick="toggleMenu()">☰</button>
-
-  <!-- Main Content -->
-  <div id="main-content" style="display: none;">
-    <header>
-      <nav>
-        <ul id="nav-menu">
-          <li><button class="tab-button active" onclick="openTab('home')">Home</button></li>
-          <li><button class="tab-button" onclick="openTab('projects')">Projects</button></li>
-          <li><button class="tab-button" onclick="openTab('skills')">Skills</button></li>
-          <li><button class="tab-button" onclick="openTab('about')">About</button></li>
-          <li><button class="tab-button" onclick="openTab('contact')">Contact</button></li>
+  <header class="header">
+    <div class="container header-container">
+      <div class="logo">Your Name</div>
+      <nav class="nav">
+        <ul class="nav-list">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
-    </header>
-
-    <!-- Tab Content -->
-    <section id="home" class="tab-content" style="display: block;">
-      <h1>Hey, I'm Aravind Soundirarajan 👋</h1>
-      <p>Welcome to my colorful, chaotic portfolio!</p>
-    </section>
-
-    <section id="projects" class="tab-content">
-      <h2>🚀 Projects</h2>
-      <p>Coming soon!</p>
-    </section>
-
-    <section id="skills" class="tab-content">
-      <h2>🧠 Skills</h2>
-      <p>Tech list here</p>
-    </section>
-
-    <section id="about" class="tab-content">
-      <h2>🙋 About Me</h2>
-      <p>Bio goes here</p>
-    </section>
-
-    <section id="contact" class="tab-content">
-      <h2>📫 Contact</h2>
-      <div class="social-buttons">
-        <a href="https://github.com/Atb4k" class="social-icon" target="_blank" title="GitHub">
-          <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub Icon" />
-        </a>
-        <a href="https://www.linkedin.com/in/aravind-soundirarajan-8963242b6/" class="social-icon" target="_blank" title="LinkedIn">
-          <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn Icon" />
-        </a>
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
-      <div class="contact-info">
-        <p><strong>Email:</strong> <a href="mailto:aravindsoundir@gmail.com">aravindsoundir@gmail.com</a></p>
-        <p><strong>Phone:</strong> <a href="tel:01133446502">01133446502</a></p>
+    </div>
+  </header>
+
+  <section id="home" class="hero">
+    <div class="container hero-content">
+      <h1>Your Name</h1>
+      <p>Frontend Developer & UX Enthusiast</p>
+      <a href="Your_CV.pdf" class="btn">Download CV</a>
+    </div>
+  </section>
+
+  <section id="about" class="about">
+    <div class="container">
+      <h2>About Me</h2>
+      <div class="about-content">
+        <img src="your-photo.jpg" alt="Your Photo" class="about-photo">
+        <div class="about-text">
+          <p>Brief professional summary goes here. Talk about your background, experience, and what drives you as a developer.</p>
+          <a href="Your_CV.pdf" class="btn">View Full CV</a>
+        </div>
       </div>
-    </section>
-  </div>
+    </div>
+  </section>
+
+  <section id="skills" class="skills">
+    <div class="container">
+      <h2>Skills</h2>
+      <div class="skills-grid">
+        <div class="skill"><i class="fab fa-html5 fa-2x"></i><span>HTML5</span></div>
+        <div class="skill"><i class="fab fa-css3-alt fa-2x"></i><span>CSS3</span></div>
+        <div class="skill"><i class="fab fa-js-square fa-2x"></i><span>JavaScript</span></div>
+        <div class="skill"><i class="fab fa-react fa-2x"></i><span>React</span></div>
+        <div class="skill"><i class="fab fa-node fa-2x"></i><span>Node.js</span></div>
+        <div class="skill"><i class="fab fa-git-alt fa-2x"></i><span>Git</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="projects">
+    <div class="container">
+      <h2>Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <img src="project1.png" alt="Project 1">
+          <h3>Project Title 1</h3>
+          <p>Short project description highlighting features and technologies used.</p>
+          <div class="project-links">
+            <a href="#" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+            <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+          </div>
+        </div>
+        <!-- Repeat .project-card as needed -->
+      </div>
+    </div>
+  </section>
+
+  <section id="experience" class="experience">
+    <div class="container">
+      <h2>Experience</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <h3>Job Title at Company</h3>
+          <span class="timeline-date">Jan 2022 – Present</span>
+          <ul>
+            <li>Key responsibility or accomplishment.</li>
+            <li>Another major task or result.</li>
+          </ul>
+        </div>
+        <!-- Repeat .timeline-item for other roles -->
+      </div>
+    </div>
+  </section>
+
+  <section id="education" class="education">
+    <div class="container">
+      <h2>Education</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <h3>Degree, University</h3>
+          <span class="timeline-date">2018 – 2021</span>
+          <ul>
+            <li>Relevant coursework or achievement.</li>
+          </ul>
+        </div>
+        <!-- Repeat .timeline-item for other entries -->
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2>Contact</h2>
+      <form action="https://formspree.io/f/yourFormID" method="POST">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="_replyto">Email</label>
+          <input type="email" id="_replyto" name="_replyto" required>
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+        <button type="submit" class="btn">Send Message</button>
+      </form>
+      <p>Or email me at <a href="mailto:aravindsoundir@gmail.com">aravindsoundir@gmail.com</a></p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Your Name. All rights reserved.</p>
+    </div>
+  </footer>
 
   <script src="script.js"></script>
 </body>
