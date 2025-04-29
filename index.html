@@ -5,16 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>ATB4K | Portfolio</title>
 
-  <!-- Font preload -->
+  <!-- Fonts & CSS -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-  <!-- Launch Screen -->
+  <!-- 🚀 Launch Screen -->
   <div id="launch-screen">
     <div class="tron-watermark">ATB4K</div>
     <div class="glow-frame">
@@ -24,59 +24,58 @@
     <button onclick="startIntro()">Launch</button>
   </div>
 
-  <!-- Typing Intro -->
+  <!-- ⚡ Typing Overlay -->
   <div id="intro-overlay">
     <div id="typing-box">
       <p id="typing-text"></p>
     </div>
   </div>
 
-  <!-- Burger menu -->
+  <!-- ☰ Burger Menu -->
   <button class="menu-toggle" id="menuToggle" onclick="toggleMenu()">☰</button>
 
-  <!-- Main Content -->
+  <!-- 🖥️ Main Content -->
   <div id="main-content" style="display: none; opacity: 0; transform: scale(0.9) translateY(50px);">
     
-    <!-- Tabs Navigation -->
+    <!-- Navbar -->
     <nav>
       <ul id="nav-menu">
-        <li><button class="tab-button active" onclick="openTab('home')">Home</button></li>
-        <li><button class="tab-button" onclick="openTab('projects')">Projects</button></li>
-        <li><button class="tab-button" onclick="openTab('skills')">Skills</button></li>
-        <li><button class="tab-button" onclick="openTab('about')">About</button></li>
-        <li><button class="tab-button" onclick="openTab('contact')">Contact</button></li>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
 
     <!-- Sections -->
-    <section id="home" class="tab-content" style="display: block;">
+    <section id="home">
       <h1>Hey, I'm Aravind Soundirarajan 👋</h1>
       <p>Welcome to my colorful, chaotic portfolio!</p>
     </section>
 
-    <section id="projects" class="tab-content">
+    <section id="projects">
       <h2>🚀 Projects</h2>
       <p>Coming soon!</p>
     </section>
 
-    <section id="skills" class="tab-content">
+    <section id="skills">
       <h2>🧠 Skills</h2>
-      <p>Tech list here</p>
+      <p>Tech list here!</p>
     </section>
 
-    <section id="about" class="tab-content">
+    <section id="about">
       <h2>🙋 About Me</h2>
-      <p>Bio goes here</p>
+      <p>Bio coming soon!</p>
     </section>
 
-    <section id="contact" class="tab-content">
+    <section id="contact">
       <h2>📫 Contact</h2>
-
       <div class="social-buttons">
-        <a href="https://github.com/Atb4k" class="social-icon" target="_blank" title="GitHub">
+        <a href="https://github.com/Atb4k" class="social-icon" target="_blank">
           <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub Icon" />
         </a>
-        <a href="https://www.linkedin.com/in/aravind-soundirarajan-8963242b6/" class="social-icon" target="_blank" title="LinkedIn">
+        <a href="https://www.linkedin.com/in/aravind-soundirarajan-8963242b6/" class="social-icon" target="_blank">
           <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn Icon" />
         </a>
       </div>
@@ -86,9 +85,10 @@
         <p><strong>Phone:</strong> <a href="tel:01133446502">01133446502</a></p>
       </div>
     </section>
+
   </div>
 
-  <!-- Scripts -->
+  <!-- 📜 Scripts -->
   <script>
     function toggleMenu() {
       const menu = document.getElementById('nav-menu');
@@ -121,7 +121,7 @@
       if (i < lines.length) {
         textBox.innerHTML += lines[i] + "<br/>";
         i++;
-        setTimeout(runTypingIntro, 1300);
+        setTimeout(runTypingIntro, 1200);
       } else {
         setTimeout(() => {
           document.getElementById("intro-overlay").style.display = "none";
@@ -135,22 +135,6 @@
           }, 50);
         }, 1500);
       }
-    }
-
-    function openTab(tabId) {
-      const tabs = document.querySelectorAll('.tab-content');
-      tabs.forEach(tab => {
-        tab.style.display = 'none';
-      });
-
-      document.getElementById(tabId).style.display = 'block';
-
-      const buttons = document.querySelectorAll('.tab-button');
-      buttons.forEach(button => {
-        button.classList.remove('active');
-      });
-
-      event.target.classList.add('active');
     }
   </script>
 
