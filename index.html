@@ -4,17 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>ATB4K | Portfolio</title>
-
-  <!-- Fonts & CSS -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-  <!-- 🚀 Launch Screen -->
+  <!-- Launch Screen -->
   <div id="launch-screen">
     <div class="tron-watermark">ATB4K</div>
     <div class="glow-frame">
@@ -24,119 +21,68 @@
     <button onclick="startIntro()">Launch</button>
   </div>
 
-  <!-- ⚡ Typing Overlay -->
+  <!-- Typing Intro -->
   <div id="intro-overlay">
     <div id="typing-box">
       <p id="typing-text"></p>
     </div>
   </div>
 
-  <!-- ☰ Burger Menu -->
+  <!-- Burger Menu (Mobile Only) -->
   <button class="menu-toggle" id="menuToggle" onclick="toggleMenu()">☰</button>
 
-  <!-- 🖥️ Main Content -->
-  <div id="main-content" style="display: none; opacity: 0; transform: scale(0.9) translateY(50px);">
-    
-    <!-- Navbar -->
-    <nav>
-      <ul id="nav-menu">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
+  <!-- Main Content -->
+  <div id="main-content" style="display: none;">
+    <header>
+      <nav>
+        <ul id="nav-menu">
+          <li><button class="tab-button active" onclick="openTab('home')">Home</button></li>
+          <li><button class="tab-button" onclick="openTab('projects')">Projects</button></li>
+          <li><button class="tab-button" onclick="openTab('skills')">Skills</button></li>
+          <li><button class="tab-button" onclick="openTab('about')">About</button></li>
+          <li><button class="tab-button" onclick="openTab('contact')">Contact</button></li>
+        </ul>
+      </nav>
+    </header>
 
-    <!-- Sections -->
-    <section id="home">
+    <!-- Tab Content -->
+    <section id="home" class="tab-content" style="display: block;">
       <h1>Hey, I'm Aravind Soundirarajan 👋</h1>
       <p>Welcome to my colorful, chaotic portfolio!</p>
     </section>
 
-    <section id="projects">
+    <section id="projects" class="tab-content">
       <h2>🚀 Projects</h2>
       <p>Coming soon!</p>
     </section>
 
-    <section id="skills">
+    <section id="skills" class="tab-content">
       <h2>🧠 Skills</h2>
-      <p>Tech list here!</p>
+      <p>Tech list here</p>
     </section>
 
-    <section id="about">
+    <section id="about" class="tab-content">
       <h2>🙋 About Me</h2>
-      <p>Bio coming soon!</p>
+      <p>Bio goes here</p>
     </section>
 
-    <section id="contact">
+    <section id="contact" class="tab-content">
       <h2>📫 Contact</h2>
       <div class="social-buttons">
-        <a href="https://github.com/Atb4k" class="social-icon" target="_blank">
+        <a href="https://github.com/Atb4k" class="social-icon" target="_blank" title="GitHub">
           <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub Icon" />
         </a>
-        <a href="https://www.linkedin.com/in/aravind-soundirarajan-8963242b6/" class="social-icon" target="_blank">
+        <a href="https://www.linkedin.com/in/aravind-soundirarajan-8963242b6/" class="social-icon" target="_blank" title="LinkedIn">
           <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn Icon" />
         </a>
       </div>
-
       <div class="contact-info">
         <p><strong>Email:</strong> <a href="mailto:aravindsoundir@gmail.com">aravindsoundir@gmail.com</a></p>
         <p><strong>Phone:</strong> <a href="tel:01133446502">01133446502</a></p>
       </div>
     </section>
-
   </div>
 
-  <!-- 📜 Scripts -->
-  <script>
-    function toggleMenu() {
-      const menu = document.getElementById('nav-menu');
-      menu.classList.toggle('show');
-    }
-
-    function startIntro() {
-      const launch = document.getElementById("launch-screen");
-      const overlay = document.getElementById("intro-overlay");
-
-      launch.classList.add("fade-out");
-
-      setTimeout(() => {
-        launch.style.display = "none";
-        overlay.style.display = "flex";
-        runTypingIntro();
-      }, 1200);
-    }
-
-    const lines = [
-      "Initializing ATB4K.exe...",
-      "Loading anime protocol layers...",
-      "Activating vision UI shaders...",
-      "Welcome to the ATB4K Verse."
-    ];
-
-    let i = 0;
-    function runTypingIntro() {
-      const textBox = document.getElementById("typing-text");
-      if (i < lines.length) {
-        textBox.innerHTML += lines[i] + "<br/>";
-        i++;
-        setTimeout(runTypingIntro, 1200);
-      } else {
-        setTimeout(() => {
-          document.getElementById("intro-overlay").style.display = "none";
-          const main = document.getElementById("main-content");
-          main.style.display = "block";
-          document.getElementById("menuToggle").classList.add("show");
-          setTimeout(() => {
-            main.style.transition = "opacity 1s ease, transform 1s ease";
-            main.style.opacity = "1";
-            main.style.transform = "scale(1) translateY(0)";
-          }, 50);
-        }, 1500);
-      }
-    }
-  </script>
-
+  <script src="script.js"></script>
 </body>
 </html>
