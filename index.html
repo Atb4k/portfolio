@@ -123,11 +123,9 @@
   <section id="contact" class="contact">
     <div class="container">
       <h2>Contact</h2>
-      <form action="https://formsubmit.co/aravindsoundir@gmail.com" method="POST">
-        <!-- Disable FormSubmit’s CAPTCHA -->
+      <form id="contact-form" action="https://formsubmit.co/aravindsoundir@gmail.com" method="POST">
+        <!-- disable FormSubmit CAPTCHA -->
         <input type="hidden" name="_captcha" value="false">
-        <!-- Optional: Redirect after submit -->
-        <input type="hidden" name="_next" value="https://your-website.com/thank-you.html">
 
         <div class="form-group">
           <label for="name">Name</label>
@@ -148,11 +146,8 @@
     </div>
   </section>
 
-  <footer class="footer">
-    <div class="container">
-      <p>&copy; 2025 Your Name. All rights reserved.</p>
-    </div>
-  </footer>
+  <!-- Popup alert -->
+  <div id="form-alert" class="form-alert"></div>
 
   <script src="script.js"></script>
 </body>

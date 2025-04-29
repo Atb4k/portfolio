@@ -12,9 +12,7 @@ html { scroll-behavior: smooth; font-family: 'Inter', sans-serif; color: #333; }
 .logo {
   font-family: 'Montserrat', sans-serif; font-size: 1.5rem; font-weight: 700; color: #1F3A93;
 }
-.nav-list {
-  list-style: none; display: flex; gap: 1.5rem;
-}
+.nav-list { list-style: none; display: flex; gap: 1.5rem; }
 .nav-list li a {
   text-decoration: none; font-weight: 500; color: #333;
 }
@@ -118,4 +116,24 @@ html { scroll-behavior: smooth; font-family: 'Inter', sans-serif; color: #333; }
 }
 .footer {
   text-align: center; padding: 1rem 0; background: #f8f8f8;
+}
+
+/* ===== Popup Alert ===== */
+.form-alert {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1ABC9C;
+  color: #fff;
+  padding: 1rem 2rem;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 2000;
+}
+.form-alert.show {
+  opacity: 1;
 }
